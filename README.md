@@ -4,6 +4,8 @@
 
 ## Run
 
+Create ".env" with variable DATABASE_URI=mongodb://mongo:27017/<your database_name>
+
 Run using Vagrant:
 
 ```
