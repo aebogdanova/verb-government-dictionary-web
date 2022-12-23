@@ -1,0 +1,17 @@
+<ul class="list-group list-group-flush">
+    {% for item in items %}
+    <li class="list-group-item"><b>{{ item.verb }} {{ item.preposition }}:</b></li>
+    <table class="table table-hover">
+        <thead>
+        </thead>
+        <tbody>
+        {% for f_item in item.features %}
+        <tr>
+            <td>{{ f_item.features }}</td>
+            <td>{{ f_item.nouns }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+</ul>

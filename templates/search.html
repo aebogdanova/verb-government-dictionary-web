@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href=".">О проекте</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="search">Поиск по глаголу</a>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+{% endblock %}
+
+
+{% block content %}
+<main class="container">
+
+  <div class="bg-light p-5 rounded">
+    <h1>Поиск по глаголу</h1>
+    <p class="lead">Введите в форму поиска глагол в начальной форме, чтобы найти в словаре его управление.</p>
+    <form class="d-flex" role="search" action="search" method="GET">
+      <input class="form-control me-2" type="search" placeholder="Глагол в начальной форме" aria-label="Search" name="q">
+      <button class="btn btn-outline-success" type="submit">Искать</button>
+    </form>
+  </div>
+
+  <div class="padding25"></div>
+
+  {{ result|safe }}
+
+  <div class="padding25"></div>
+
+</main>
+{% endblock %}
+

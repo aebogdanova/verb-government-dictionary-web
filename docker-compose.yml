@@ -1,0 +1,50 @@
+version: "3.3"
+services:
+
+  web:
+    container_name: web
+    build: 
+      context: .
+      dockerfile: Dockerfile.web
+    ports:
+      - "5000:5000"
+    depends_on:
+      - "rest"
+    volumes:
+      - ./:/app
+    environment:
+      - "REST_URL=http://rest:5000/"
+
+  rest:
+    container_name: rest
+    build:
+      context: .
+      dockerfile: Dockerfile.rest 
+    ports:
+      - "8000:5000"
+    depends_on:
+      - "mongo"
+    volumes:
+      - ./:/app
+    environment:
+      - "MONGO_HOST=mongo"
+
+  mongo:
+    container_name: mongo
+    image: "mongo:4.2"
+    env_file:
+      - .env
+    ports: 
+      - "27017:27017"
+
+  mongo-data: 
+    container_name: mongo-data
+    build: 
+      context: .
+      dockerfile: Dockerfile.data
+      args:
+        - DATABASE_URI=$DATABASE_URI
+    env_file:
+      - .env
+    depends_on:
+      - mongo

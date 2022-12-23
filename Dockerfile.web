@@ -1,0 +1,18 @@
+FROM ubuntu:focal
+
+RUN apt update
+RUN apt install -y python3-pip
+
+RUN mkdir -p /app
+WORKDIR /app
+
+COPY requirements-web.txt /app/requirements.txt
+RUN pip3 install -r requirements.txt
+
+COPY web.py /app/web.py
+COPY templates /app/templates
+COPY static /app/static
+
+CMD ["python3", "web.py"]
+
+EXPOSE 5000
