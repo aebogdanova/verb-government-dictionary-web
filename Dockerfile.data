@@ -1,10 +1,7 @@
 FROM mongo:4.2
 
-ARG DATABASE_URI
-ENV DATABASE_URI ${DATABASE_URI}
-
 COPY data/genre_all.tar.gz /genre_all.tar.gz
 
 RUN tar -xf genre_all.tar.gz && rm genre_all.tar.gz
 
-CMD mongoimport --uri $DATABASE_URI --collection=genre_all --type=json --file genre_all.json --jsonArray
+CMD mongoimport --uri="mongodb://mongo:27017/government" --collection=genre_all --type=json --file genre_all.json --jsonArray
