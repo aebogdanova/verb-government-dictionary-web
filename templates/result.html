@@ -8,7 +8,17 @@
         {% for f_item in item.features %}
         <tr>
             <td>{{ f_item.features }}</td>
-            <td>{{ f_item.nouns }}</td>
+            {% set nouns = f_item.nouns.split(", ") %}
+            {% set number_of_nouns = nouns|length %}
+            {% if number_of_nouns > 30 %}
+            <td class="nouns">{{ nouns[:20]|join(", ") }}
+                <span class="dots">...</span>
+                <span class="more">{{ nouns[20:]|join(", ") }}</span>
+                <button class="moreLessButton">Показать ещё</button>
+            </td>
+            {% else %}
+            <td>{{ nouns|join(", ") }}</td>
+            {% endif %}
         </tr>
         {% endfor %}
         </tbody>
