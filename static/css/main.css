@@ -46,3 +46,7 @@ a {
 .padding25 {
   padding-top: 25px;
 }
+
+th {
+  text-align: left;
+}

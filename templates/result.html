@@ -6,6 +6,8 @@
         </thead>
         <tbody>
         {% for f_item in item.features %}
+        <col width="30%" />
+        <col width="70%" />
         <tr>
             <td>{{ f_item.features }}</td>
             {% set nouns = f_item.nouns.split(", ") %}
@@ -14,7 +16,7 @@
             <td class="nouns">{{ nouns[:20]|join(", ") }}
                 <span class="dots">...</span>
                 <span class="more">{{ nouns[20:]|join(", ") }}</span>
-                <button class="moreLessButton">Показать ещё</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm moreLessButton">Показать ещё</button>
             </td>
             {% else %}
             <td>{{ nouns|join(", ") }}</td>
